@@ -23,6 +23,13 @@ namespace Sudoku
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+
+
+        void QuitClicked(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -5,8 +5,1094 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="600" Width="800">
+    
+    <DockPanel>
+        <StackPanel Background="Red"
+                    DockPanel.Dock="Top">
+            <TextBlock Foreground="White"
+                       FontSize="48"
+                       HorizontalAlignment="Center">
+                Sudoku
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Background="Green"
+                    DockPanel.Dock="Left">
+            <Expander IsExpanded="True"
+                      Width="120"
+                      Foreground="White"
+                      Header="Menu">
+                <WrapPanel Orientation="Vertical">
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="10,10,10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="10">New Game</Button>
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="5,10,10,5"
+                            Margin="10">Hint</Button>
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="5,10,10,5"
+                            Margin="10">Solve</Button>
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="5,10,10,5"
+                            Margin="10"
+                            Click="QuitClicked">Quit</Button>
+                    <Button Background="LightGray"
+                            Padding="5,10,10,5"
+                            Margin="10">Bonus Button</Button>
+                </WrapPanel> 
+            </Expander>
+        </StackPanel>
+        <StackPanel Background="Blue"
+                    DockPanel.Dock="Right">
+            <Expander IsExpanded="False"
+                      Width="120"
+                      Foreground="White"
+                      Header="Place Holder">
+                <WrapPanel Orientation="Vertical">
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="10,10,10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="10">Gray Button</Button>
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="5,10,10,5"
+                            Margin="10">Gray Button</Button>
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="5,10,10,5"
+                            Margin="10">Gray Button</Button>
+                    <Button Background="LightGray"
+                            Width="100"
+                            Padding="5,10,10,5"
+                            Margin="10">Gray Button</Button>
+                    <Button Background="LightGray"
+                            Padding="5,10,10,5"
+                            Margin="10">Gray Button</Button>
+                </WrapPanel>
+            </Expander>
+        </StackPanel>
+        <Grid Background="Black"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <Grid.Resources>
+                <SolidColorBrush x:Key="Brush"
+                                 Color="Black" />
+                <SolidColorBrush x:Key="Brush1"
+                                 Color="DarkGray" />
+            </Grid.Resources>
+            <!-- Define 3 rows-->
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!-- Define 3 columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="{StaticResource Brush1}"
+                        BorderThickness="6">
+                    <Grid Background="White">
+                    
+                        <!-- Define 3 inner rows-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <!-- Define 3 inner columns -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <!-- Upper Left Corner, (0,0) - (2,2)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <ListBox 
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 Foreground="Black">
+                            <ListBoxItem>1</ListBoxItem>
+                            <ListBoxItem>2</ListBoxItem>
+                            <ListBoxItem>3</ListBoxItem>
+                            <ListBoxItem>4</ListBoxItem>
+                            <ListBoxItem>5</ListBoxItem>
+                            <ListBoxItem>6</ListBoxItem>
+                            <ListBoxItem>7</ListBoxItem>
+                            <ListBoxItem>8</ListBoxItem>
+                            <ListBoxItem>9</ListBoxItem>
+                        </ListBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box01"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box02"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box10"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box11"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box12"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box20"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box21"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box22"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+                </Border>
+            <Border Grid.Row="1" BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Middle Left (0,3) - (2,5)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box03"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box04"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box05"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box13"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box14"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box15"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box23"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box24"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box25"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2"
+                    BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Lower Left Corner, (0,6) - (2,8)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box06"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box07"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box08"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box16"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box17"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box18"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box26"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box27"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box28"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1"
+                    Grid.Row="0"
+                    BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Upper Middle, (3,0) - (5,2)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box30"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box31"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box32"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box40"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box41"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box42"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box50"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box51"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box52"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Middle, (3,3) - (5,5)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box33"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box34"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box35"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box43"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box44"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box45"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box53"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box54"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box55"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1"
+                    Grid.Row="2"
+                    BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Bottom Middle, (3,6) - (5,8)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box36"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box37"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box38"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box46"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box47"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box48"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box56"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box57"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box58"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="0"
+                BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Upper Right Corner, (6,0) - (8,2)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box60"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box61"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box62"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box70"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box71"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box72"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box80"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box81"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box82"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2"
+                    Grid.Row="1"
+                    BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Middle Right, (6,3) - (8,5)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box63"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box64"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box65"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box73"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box74"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box75"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box83"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box84"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box85"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="2" BorderBrush="{StaticResource Brush1}"
+                    BorderThickness="6">
+                <Grid Background="White">
+                    <!-- Define 3 inner rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!-- Define 3 inner columns -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!-- Lower Right Corner, (6,6) - (8,8)-->
+                    <Border Grid.Column="0"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box66"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">9</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box67"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">8</TextBox>
+                    </Border>
+                    <Border Grid.Column="0"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="2,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box68"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">6</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,1,1">
+                        <TextBox Background="White"
+                                 Name="Box76"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">4</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,1">
+                        <TextBox Background="White"
+                                 Name="Box77"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">2</TextBox>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,1,2">
+                        <TextBox Background="White"
+                                 Name="Box78"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">1</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="0"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,2,2,1">
+                        <TextBox Background="White"
+                                 Name="Box86"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">3</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="1"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,1">
+                        <TextBox Background="White"
+                                 Name="Box87"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">5</TextBox>
+                    </Border>
+                    <Border Grid.Column="2"
+                            Grid.Row="2"
+                            BorderBrush="{StaticResource Brush}"
+                            BorderThickness="1,1,2,2">
+                        <TextBox Background="White"
+                                 Name="Box88"
+                                 FontSize="28"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">7</TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+                
+        </Grid>
+    </DockPanel>
 </Window>
